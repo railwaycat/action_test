@@ -6,8 +6,15 @@
 trigger: none
 # - main
 
+strategy:
+  matrix:
+    macos10.14:
+      imageName: 'macOS-10.14'
+    macos10.15:
+      imageName: 'macOS-10.15'
+
 pool:
-  vmImage: macOS-10.14
+  vmImage: $(imageName)
 
 steps:
 - script: echo Hello, world!
@@ -17,14 +24,13 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
     which brew
-    brew info gnutls
     echo "aabbcc" > $(Build.ArtifactStagingDirectory)/aa.txt
+    touch $(Build.ArtifactStagingDirectory)/$(sw_vers -productVersion).rr
   displayName: 'Run a multi-line script'
 
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Pipeline.Workspace)'
-    artifact: 'aa.txt'
     publishLocation: 'pipeline'
 # - task: GitHubRelease@1
 #  inputs:
