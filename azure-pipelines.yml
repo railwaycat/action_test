@@ -21,7 +21,7 @@ steps:
     echo "aabbcc" > aa.txt
   displayName: 'Run a multi-line script'
 
-- task: GitHubRelease@0
+- task: GitHubRelease@1
   inputs:
     gitHubConnection: railwaycat
     repositoryName: '$(Build.Repository.Name)'
