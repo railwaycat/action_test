@@ -18,7 +18,7 @@ steps:
     echo See https://aka.ms/yaml
     which brew
     brew info gnutls
-    echo "aabbcc" > aa.txt
+    echo "aabbcc" > $(Build.ArtifactStagingDirectory)/aa.txt
   displayName: 'Run a multi-line script'
 
 - task: GitHubRelease@1
